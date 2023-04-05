@@ -4,5 +4,6 @@ const editAvailabilityController = require('../controllers/editAvailabilityContr
 const router = express.Router();
 
 router.put('/editAvailability/:helperId', editAvailabilityController.updateAvailability);
+router.get('/getAvailability/:helperId', editAvailabilityController.getAvailability);
 
 module.exports = router;

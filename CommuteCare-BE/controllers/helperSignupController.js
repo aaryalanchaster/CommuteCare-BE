@@ -12,11 +12,17 @@ exports.signup = async (req, res, next) => {
     const password = req.body.password;
     const existingUser = await User.findOne({ email: email });
     const existingHelper = await Helper.findOne({ email: email });
-    if (existingHelper || existingUser) {
-      const error = new Error("Email already exists");
+    if (existingUser) {
+      const error = new Error('A user with this email address already exists');
       error.statusCode = 422;
       throw error;
     }
+    else if (existingHelper ) {
+      const error = new Error('A helper with this email address already exists');
+      error.statusCode = 422;
+      throw error;
+    }
+    // 
     // Generate OTP
     const OTP = Math.floor(1000 + Math.random() * 9000);
 

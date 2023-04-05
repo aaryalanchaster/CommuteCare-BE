@@ -22,7 +22,22 @@ exports.updateAvailability = async (req, res, next) => {
       // Save the updated helper to the database
       await helper.save();
   
-      return res.status(200)({ message: "Availability updated successfully" });}
-    
+    return res.status(200).json({ message: "Availability updated successfully" })
+      }
   };
-  
+  exports.getAvailability = async (req, res, next) => {
+    const helperId = req.params.helperId;
+    
+    try {
+        const helper = await Helper.findById(helperId);
+        
+        if (!helper) {
+            return res.status(404).json({ message: "Helper not found" });
+        }
+        
+        return res.status(200).json({ availability: helper.availability });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};

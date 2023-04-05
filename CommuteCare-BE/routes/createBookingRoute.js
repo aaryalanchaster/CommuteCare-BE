@@ -1,31 +1,13 @@
 const express = require('express');
-//const { body } = require('express-validator/check');
-
 const bookingController = require('../controllers/createBookingController');
+const isAuthHelper = require('../middleware/is-AuthHelper');
 const isAuth = require('../middleware/is-auth');
 const router = express.Router();
-//const moment= require("moment");
 
-// let rand = Math.random()
-// console.log(rand)
-// if (rand > 0.5) {
+router.post('/book', isAuth, bookingController.createBooking);
 
-// router.post('/book', isAuth, bookingController.createBooking);
-// }
-// else{
-//     router.post('/book', isAuth, bookingController.declinedbooking);
-// }
+router.post('/accept-booking/:bookingId', isAuthHelper, bookingController.acceptBooking);
 
-router.post('/book', isAuth, (req, res) => {
-    const rand = Math.random();
-    console.log(rand);
-    if (rand > 0.5) {
-      bookingController.createBooking(req, res);
-    } else {
-      bookingController.declinedbooking(req, res);
-    }
-  });
-  
-
+router.post('/decline-booking/:bookingId', isAuthHelper, bookingController.declineBooking);
 
 module.exports = router;

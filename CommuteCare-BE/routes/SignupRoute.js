@@ -32,28 +32,7 @@ router.put(
   userController.signup
 );
 router.put(
-  '/helperSignup',
-  // [
-  //   body('email')
-  //     .isEmail()
-  //     .withMessage('Please enter a valid email.')
-  //     .custom((value, { req }) => {
-  //       return Helper.findOne({ email: value }).then(helperDoc => {
-  //         if (helperDoc) {
-  //           return Promise.reject('E-Mail address already exists!');
-  //         }
-  //       });
-  //     }).
-  //     // .normalizeEmail(),
-  //   body('password')
-  //     .trim()
-  //     .isLength({ min: 5 }),
-  //   body('name')
-  //     .trim()
-  //     .not()
-  //     .isEmpty()
-  // ],
-  helperController.signup
+  '/helperSignup', helperController.signup
 );
 
 module.exports = router;

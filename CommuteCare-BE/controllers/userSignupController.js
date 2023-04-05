@@ -16,8 +16,13 @@ exports.signup = async (req, res, next) => {
     const existingHelper = await Helper.findOne({ email: email });
     const existingUser = await User.findOne({ email: email });
 
-    if (existingHelper || existingUser) {
-      const error = new Error('Email address already exists');
+    if (existingUser) {
+      const error = new Error('A user with this email address already exists');
+      error.statusCode = 422;
+      throw error;
+    }
+    if (existingHelper ) {
+      const error = new Error('A helper with this email address already exists');
       error.statusCode = 422;
       throw error;
     }

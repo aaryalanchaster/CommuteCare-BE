@@ -22,8 +22,14 @@ const userSchema = new Schema({
   gender:{
     type:String,
   },
+  profilePhotoUrl:{
+    type:String
+  },
   mob:{
     type:String,
+  },
+  profilePhotoUrl:{
+    type:String
   },
   userId:{
     type:Schema.Types.ObjectId,

@@ -31,7 +31,7 @@ exports.forgotPassword = async (req, res) => {
       text: `Hello from Commute Care,
 We have received a request to reset your password on Commutecare. To create a new password, please click on the link below:
 
-http://localhost:3000/newPassword?token=${token}
+https://commutecare.vercel.app/newPassword?token=${token}
 
 Thank you for choosing Commutecare. We are committed to protecting your account and ensuring the security of your personal information.
 

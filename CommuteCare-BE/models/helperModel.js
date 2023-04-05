@@ -3,10 +3,9 @@ const Schema = mongoose.Schema;
 
 const helperSchema = new Schema(
   {
-      firstname:{
+    firstname:{
         type: String,
-       
-      },
+    },
       lastname:{
       type: String,
       
@@ -42,17 +41,29 @@ const helperSchema = new Schema(
       type: Number,
       default: 0
     },
+    profilePhotoUrl:{
+      type:String
+    },
     email_verified:{
         type:Boolean,
         default:false
     },
+    rating:{
+      type:Number
+    },
+    feedback:{
+      type:String
+    },
     helperId:{
         type:Schema.Types.ObjectId,
-        ref:'Helper'
+        ref:'helpers_'
     },
     description:{
       type: String,
       default: ''
+    },
+    profilePhotoUrl:{
+      type:String
     },
    availability: {
     Monday: {
